@@ -1815,6 +1815,7 @@
 #if HAS_TRINAMIC
 
   #define custom_TMC_CURRENT_TOTAL 565
+  #define custom_TMC_RSENSE_CURRENT 0.075
 
   #define HOLD_MULTIPLIER    0.5  // Scales down the holding current from run current
   #define INTERPOLATE       true  // Interpolate X/Y/Z_MICROSTEPS to 256
@@ -1822,91 +1823,91 @@
   #if AXIS_IS_TMC(X)
     #define X_CURRENT      custom_TMC_CURRENT_TOTAL // (mA) RMS current. Multiply by 1.414 for peak current.
     #define X_MICROSTEPS   16  // 0..256
-    #define X_RSENSE     0.11
+    #define X_RSENSE       custom_TMC_RSENSE_CURRENT
     #define X_CHAIN_POS    -1  // <=0 : Not chained. 1 : MCU MOSI connected. 2 : Next in chain, ...
   #endif
 
   #if AXIS_IS_TMC(X2)
     #define X2_CURRENT    custom_TMC_CURRENT_TOTAL
     #define X2_MICROSTEPS  16
-    #define X2_RSENSE    0.11
+    #define X2_RSENSE      custom_TMC_RSENSE_CURRENT
     #define X2_CHAIN_POS   -1
   #endif
 
   #if AXIS_IS_TMC(Y)
     #define Y_CURRENT     custom_TMC_CURRENT_TOTAL
     #define Y_MICROSTEPS   16
-    #define Y_RSENSE     0.11
+    #define Y_RSENSE     custom_TMC_RSENSE_CURRENT
     #define Y_CHAIN_POS    -1
   #endif
 
   #if AXIS_IS_TMC(Y2)
     #define Y2_CURRENT    custom_TMC_CURRENT_TOTAL
     #define Y2_MICROSTEPS  16
-    #define Y2_RSENSE    0.11
+    #define Y2_RSENSE    custom_TMC_RSENSE_CURRENT
     #define Y2_CHAIN_POS   -1
   #endif
 
   #if AXIS_IS_TMC(Z)
     #define Z_CURRENT     custom_TMC_CURRENT_TOTAL
     #define Z_MICROSTEPS   16
-    #define Z_RSENSE     0.11
+    #define Z_RSENSE     custom_TMC_RSENSE_CURRENT
     #define Z_CHAIN_POS    -1
   #endif
 
   #if AXIS_IS_TMC(Z2)
     #define Z2_CURRENT    custom_TMC_CURRENT_TOTAL
     #define Z2_MICROSTEPS  16
-    #define Z2_RSENSE    0.11
+    #define Z2_RSENSE    custom_TMC_RSENSE_CURRENT
     #define Z2_CHAIN_POS   -1
   #endif
 
   #if AXIS_IS_TMC(Z3)
     #define Z3_CURRENT    custom_TMC_CURRENT_TOTAL
     #define Z3_MICROSTEPS  16
-    #define Z3_RSENSE    0.11
+    #define Z3_RSENSE    custom_TMC_RSENSE_CURRENT
     #define Z3_CHAIN_POS   -1
   #endif
 
   #if AXIS_IS_TMC(E0)
     #define E0_CURRENT    custom_TMC_CURRENT_TOTAL
     #define E0_MICROSTEPS  16
-    #define E0_RSENSE    0.11
+    #define E0_RSENSE    custom_TMC_RSENSE_CURRENT
     #define E0_CHAIN_POS   -1
   #endif
 
   #if AXIS_IS_TMC(E1)
     #define E1_CURRENT    custom_TMC_CURRENT_TOTAL
     #define E1_MICROSTEPS  16
-    #define E1_RSENSE    0.11
+    #define E1_RSENSE    custom_TMC_RSENSE_CURRENT
     #define E1_CHAIN_POS   -1
   #endif
 
   #if AXIS_IS_TMC(E2)
     #define E2_CURRENT    custom_TMC_CURRENT_TOTAL
     #define E2_MICROSTEPS  16
-    #define E2_RSENSE    0.11
+    #define E2_RSENSE    custom_TMC_RSENSE_CURRENT
     #define E2_CHAIN_POS   -1
   #endif
 
   #if AXIS_IS_TMC(E3)
     #define E3_CURRENT    custom_TMC_CURRENT_TOTAL
     #define E3_MICROSTEPS  16
-    #define E3_RSENSE    0.11
+    #define E3_RSENSE    custom_TMC_RSENSE_CURRENT
     #define E3_CHAIN_POS   -1
   #endif
 
   #if AXIS_IS_TMC(E4)
     #define E4_CURRENT    custom_TMC_CURRENT_TOTAL
     #define E4_MICROSTEPS  16
-    #define E4_RSENSE    0.11
+    #define E4_RSENSE    custom_TMC_RSENSE_CURRENT
     #define E4_CHAIN_POS   -1
   #endif
 
   #if AXIS_IS_TMC(E5)
     #define E5_CURRENT    custom_TMC_CURRENT_TOTAL
     #define E5_MICROSTEPS  16
-    #define E5_RSENSE    0.11
+    #define E5_RSENSE    custom_TMC_RSENSE_CURRENT
     #define E5_CHAIN_POS   -1
   #endif
 
@@ -1995,7 +1996,7 @@
    * Define you own with
    * { <off_time[1..15]>, <hysteresis_end[-3..12]>, hysteresis_start[1..8] }
    */
-  #define CHOPPER_TIMING CHOPPER_DEFAULT_12V
+  #define CHOPPER_TIMING CHOPPER_DEFAULT_24V
 
   /**
    * Monitor Trinamic drivers for error conditions,
@@ -2008,7 +2009,7 @@
    * M912 - Clear stepper driver overtemperature pre-warn condition flag.
    * M122 - Report driver parameters (Requires TMC_DEBUG)
    */
-  //#define MONITOR_DRIVER_STATUS
+  #define MONITOR_DRIVER_STATUS
 
   #if ENABLED(MONITOR_DRIVER_STATUS)
     #define CURRENT_STEP_DOWN     50  // [mA]
